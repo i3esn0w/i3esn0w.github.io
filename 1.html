@@ -1,14 +1,56 @@
 <script>
 let ua = navigator.userAgent;
- alert(ua)
-isMobileQQ : function(){
+let browser = {
+  isAndroid: function() {
+    return ua.match(/Android/i) ? true : false;
+  },
+  isIOS: function() {
+    return ua.match(/iPhone|iPad|iPod/i) ? true : false;
+  },
+  isMobileQQ : function(){
     return /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(ua) || /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(ua);
-},
-isMobileTIM : function(){
-    return /(iPad|iPhone|iPod).*? (IPad)?TIM\/([\d\.]+)/.test(ua) || /\bV1_AND_SQI?_([\d\.]+)(.*? TIM\/([\d\.]+))?/.test(ua);
-},
-alert(isMobileQQ())
- alert(isMobileTIM())
+  },
+  isSOHUNewsClient: function () {
+    return ua.match(/jsKit/i) ? true : false;
+  },
+  isWeibo: function () {
+    return ua.match(/weibo/i) ? true : false;
+  },
+  isWechat: function () {
+    return ua.match(/MicroMessenger/i) ? true : false;
+  },
+  isUC: function() {
+    return ua.match(/UCBrowser/i) ? true : false;
+  },
+  isAlipay: function() {
+    return ua.match(/alipayclient/i) ? true : false;
+  },
+  isChrome: function() {
+    return ua.match(/(?:Chrome|CrMo|CriOS)\/([0-9]{1,2}\.[0-9]\.[0-9]{3,4}\.[0-9]+)/i) && window.chrome ? true : false;
+  },
+  isBaidubox: function() {
+    //手机百度 && 针对于三星等机器系统自带的手机百度会存在  没有安装客户端 并且  自动调起客户端  情况下 出现的404的状况
+    //这种手机百度的ua和正常手机百度的ua 的区别在于 在ua中不存在 T7/7.4 这个字段
+    //针对于这种手机百度，在页面加载时 取消自动调起客户端的逻辑
+    //正常的手机百度允许  页面加载时  自动调起客户端
+    return ua.match(/baiduboxapp/i) && !ua.match(/T7\/7\.4/i) ? true : false;
+  },
+  isSupportAPPLink: function () {
+    // ios 9.3 以上支持
+    return /OS 9(_[3-9])* like Mac OS X/img.test(ua) || /OS 1[0-9]+(_\d+)+ like Mac OS X/img.test(ua);
+  },
+  isIOS9Up: function () {
+    // ios 9-9.2
+    return /OS 9(_[0-2])* like Mac OS X/img.test(ua);
+  },
+  isPC: function() {
+    // wap
+    return ua.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i) ? false : true;
+  }
+};
+if (browser.isIOS()) {
+      schemaString = DEFAULT.IosSchema + protocol;
+}
 </script>
 
 
