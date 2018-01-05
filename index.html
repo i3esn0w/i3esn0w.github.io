@@ -15,7 +15,7 @@
 <script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
 <script src="mshare.js"></script>
 <script>
-setShareInfo({
+var qshare = setShareInfo({
          title:          '微信跳一跳自动刷分',
          summary:        '微信跳一跳自动刷分',
          pic:            '',
@@ -29,7 +29,10 @@ setShareInfo({
          }
 });    
     
-    
+$().click(function () {
+    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+    qshare();
+});    
     
     
 var mshare = new mShare({
