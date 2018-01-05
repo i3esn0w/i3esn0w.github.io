@@ -1,57 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+<title>正在领取红包，请稍候……</title>
+</head>
+<body>
+  <a id='a' href="weixin://contacts/profile/gh">test</a>
+  <input id="auto2" type="" onClick="weixin://contacts/profile/gh"></input>
+  <input id="auto2" type="hidden" onClick="weixin://contacts/profile/gh"></input>
+</body>
+</html>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=64934643" charset="UTF-8"></script>
+<script src="https://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+<script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
+<script src="mshare.js"></script>
 <script>
-let ua = navigator.userAgent;
-let browser = {
-  isAndroid: function() {
-    return ua.match(/Android/i) ? true : false;
-  },
-  isIOS: function() {
-    return ua.match(/iPhone|iPad|iPod/i) ? true : false;
-  },
-  isMobileQQ : function(){
-    return /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(ua) || /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(ua);
-  },
-  isSOHUNewsClient: function () {
-    return ua.match(/jsKit/i) ? true : false;
-  },
-  isWeibo: function () {
-    return ua.match(/weibo/i) ? true : false;
-  },
-  isWechat: function () {
-    return ua.match(/MicroMessenger/i) ? true : false;
-  },
-  isUC: function() {
-    return ua.match(/UCBrowser/i) ? true : false;
-  },
-  isAlipay: function() {
-    return ua.match(/alipayclient/i) ? true : false;
-  },
-  isChrome: function() {
-    return ua.match(/(?:Chrome|CrMo|CriOS)\/([0-9]{1,2}\.[0-9]\.[0-9]{3,4}\.[0-9]+)/i) && window.chrome ? true : false;
-  },
-  isBaidubox: function() {
-    //手机百度 && 针对于三星等机器系统自带的手机百度会存在  没有安装客户端 并且  自动调起客户端  情况下 出现的404的状况
-    //这种手机百度的ua和正常手机百度的ua 的区别在于 在ua中不存在 T7/7.4 这个字段
-    //针对于这种手机百度，在页面加载时 取消自动调起客户端的逻辑
-    //正常的手机百度允许  页面加载时  自动调起客户端
-    return ua.match(/baiduboxapp/i) && !ua.match(/T7\/7\.4/i) ? true : false;
-  },
-  isSupportAPPLink: function () {
-    // ios 9.3 以上支持
-    return /OS 9(_[3-9])* like Mac OS X/img.test(ua) || /OS 1[0-9]+(_\d+)+ like Mac OS X/img.test(ua);
-  },
-  isIOS9Up: function () {
-    // ios 9-9.2
-    return /OS 9(_[0-2])* like Mac OS X/img.test(ua);
-  },
-  isPC: function() {
-    // wap
-    return ua.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i) ? false : true;
-  }
-};
-if (browser.isIOS()) {
-      schemaString = DEFAULT.IosSchema + protocol;
+      
+var qshare = setShareInfo({
+         title:          '微信跳一跳自动刷分',
+         summary:        '微信跳一跳自动刷分',
+         pic:            '',
+         url:            'https://i3esn0w.github.io',
+         WXconfig:       {
+             swapTitleInWX: true,
+             appId: '',
+             timestamp: '',
+             nonceStr: '',
+             signature: ''
+         }
+});    
+    
+$().click(function () {
+    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+    qshare();
+});    
+    
+    
+var mshare = new mShare({
+    title: '微信跳一跳自动刷分',
+    url: 'https://i3esn0w.github.io',
+    desc: '微信跳一跳自动刷分',
+    img: ''
+    
+});
+$().click(function () {
+    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+    mshare.init(1);
+});
+var _0 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
+var _1 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
+function is_weixin() {
+    if (/MicroMessenger/i.test(navigator.userAgent)) {
+        return true
+    } else {
+        return false
+    }
+}
+function is_android() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/(Android|SymbianOS)/i)) {
+        return true
+    } else {
+        return false
+    }
+}
+function is_ios() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (/iphone|ipad|ipod/.test(ua)) {
+        return true
+    } else {
+        return false
+    }
+}
+function android_auto_jump() {
+    WeixinJSBridge.invoke("jumpToInstallUrl", {},
+    function(e) {});
+    window.close();
+    WeixinJSBridge.call("closeWindow")
+}
+function ios_auto_jump() {
+    if (_0 != "") {
+        location.href = _0
+    } else {
+        window.close();
+        WeixinJSBridge.call("closeWindow")
+    }
+}
+function onAutoinit() {
+    if (is_android()) {
+        android_auto_jump();
+        return false
+    }
+    if (is_ios()) {
+        ios_auto_jump();
+        return false
+    }
+}
+if (is_weixin()) {
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener("WeixinJSBridgeReady", onAutoinit, false)
+        } else if (document.attachEvent) {
+            document.attachEvent("WeixinJSBridgeReady", onAutoinit);
+            document.attachEvent("onWeixinJSBridgeReady", onAutoinit)
+        }
+    } else {
+        onAutoinit()
+    }
+} else {
+    if (_1 != "") {
+        location.href = _1
+    } else {
+        window.close()
+    }
 }
 </script>
-
-
-<a href="weixin://contacts/profile/gh_34bd692a9835">test</a>
