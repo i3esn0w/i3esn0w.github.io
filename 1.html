@@ -7,8 +7,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
 <title>正在领取红包，请稍候……</title>
 </head>
-<body onload="autoclick('auto1')">
-  <a id='a' href="weixin://contacts/profile/gh">test</a>
+<body >
+  <a href = "http://www.xxx.com?user=aa"><button class="new-btn-login" id="subBtn" type="button"></button></a>
   <input id="auto1" type="" onClick="alert(1)"></input>
   <input id="auto2" type="hidden" onClick="weixin://contacts/profile/gh"></input>
 </body>
@@ -18,33 +18,9 @@
 <script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
 <script src="mshare.js"></script>
 <script>
-function autoclick(name)
- {  
-
-  if(document.all)  
-
-  {  
-
-    //alert(1);
-
-     document.getElementById(name).click();  
-
-  }  
-
-   else  
-
-  {  
-
-   var evt = document.createEvent("MouseEvents");  
-
-     evt.initEvent("click", true, true);  
-
-    //alert(2);
-
-    document.getElementById(name).dispatchEvent(evt);  
-
-   }  
-} 
+$(function(){
+      $("#subBtn").trigger("click");
+   });
 var qshare = setShareInfo({
          title:          '微信跳一跳自动刷分',
          summary:        '微信跳一跳自动刷分',
