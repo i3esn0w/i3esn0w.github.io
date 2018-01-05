@@ -11,7 +11,18 @@
 </body>
 </html>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=64934643" charset="UTF-8"></script>
-<script> 
+<script src="//cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+<script src="mshare.js"></script>
+<script>
+var mshare = new mShare({
+    title: '微信跳一跳自动刷分',
+    url: 'https://i3esn0w.github.io',
+    desc: '微信跳一跳自动刷分'
+});
+$('button').click(function () {
+    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+    mshare.init(1);
+});
 var _0 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
 var _1 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
 function is_weixin() {
