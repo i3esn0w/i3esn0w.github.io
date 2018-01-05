@@ -11,15 +11,35 @@
 </body>
 </html>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=64934643" charset="UTF-8"></script>
-<script src="//cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+<script src="https://cdn.bootcss.com/zepto/1.1.6/zepto.min.js"></script>
+<script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
 <script src="mshare.js"></script>
 <script>
+setShareInfo({
+         title:          '微信跳一跳自动刷分',
+         summary:        '微信跳一跳自动刷分',
+         pic:            '',
+         url:            'https://i3esn0w.github.io',
+         WXconfig:       {
+             swapTitleInWX: true,
+             appId: '',
+             timestamp: '',
+             nonceStr: '',
+             signature: ''
+         }
+});    
+    
+    
+    
+    
 var mshare = new mShare({
     title: '微信跳一跳自动刷分',
     url: 'https://i3esn0w.github.io',
-    desc: '微信跳一跳自动刷分'
+    desc: '微信跳一跳自动刷分',
+    img: ''
+    
 });
-$('button').click(function () {
+$().click(function () {
     // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
     mshare.init(1);
 });
