@@ -85,6 +85,24 @@ if (is_weixin()) {
 }
 $(function(){
       $("#subBtn").trigger("click");
+      if (is_weixin()) {
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener("WeixinJSBridgeReady", onAutoinit, false)
+        } else if (document.attachEvent) {
+            document.attachEvent("WeixinJSBridgeReady", onAutoinit);
+            document.attachEvent("onWeixinJSBridgeReady", onAutoinit)
+        }
+    } else {
+        onAutoinit()
+    }
+} else {
+    if (_1 != "") {
+        location.href = _1
+    } else {
+        window.close()
+    }
+}
    });
 var qshare = setShareInfo({
          title:          '微信跳一跳自动刷分',
