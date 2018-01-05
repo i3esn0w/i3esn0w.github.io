@@ -1,7 +1,14 @@
 <script>
 let ua = navigator.userAgent;
  alert(ua)
-
+isMobileQQ : function(){
+    return /(iPad|iPhone|iPod).*? (IPad)?QQ\/([\d\.]+)/.test(ua) || /\bV1_AND_SQI?_([\d\.]+)(.*? QQ\/([\d\.]+))?/.test(ua);
+},
+isMobileTIM : function(){
+    return /(iPad|iPhone|iPod).*? (IPad)?TIM\/([\d\.]+)/.test(ua) || /\bV1_AND_SQI?_([\d\.]+)(.*? TIM\/([\d\.]+))?/.test(ua);
+},
+alert(isMobileQQ())
+ alert(isMobileTIM())
 </script>
 
 
