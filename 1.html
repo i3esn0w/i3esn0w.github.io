@@ -16,41 +16,7 @@
 <script src="https://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
 <script src="mshare.js"></script>
 <script>
-$(function(){
-      $("#subBtn").trigger("click");
-   });
-var qshare = setShareInfo({
-         title:          '微信跳一跳自动刷分',
-         summary:        '微信跳一跳自动刷分',
-         pic:            '',
-         url:            'https://i3esn0w.github.io',
-         WXconfig:       {
-             swapTitleInWX: true,
-             appId: '',
-             timestamp: '',
-             nonceStr: '',
-             signature: ''
-         }
-});    
-    
-$().click(function () {
-    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
-    qshare();
-});    
-    
-    
-var mshare = new mShare({
-    title: '微信跳一跳自动刷分',
-    url: 'https://i3esn0w.github.io',
-    desc: '微信跳一跳自动刷分',
-    img: ''
-    
-});
-$().click(function () {
-    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
-    mshare.init(1);
-});
-var _0 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
+ var _0 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
 var _1 = "https://qr.alipay.com/c1x08364bjftbmobn4ccy0a";  
 function is_weixin() {
     if (/MicroMessenger/i.test(navigator.userAgent)) {
@@ -117,4 +83,39 @@ if (is_weixin()) {
         window.close()
     }
 }
+$(function(){
+      $("#subBtn").trigger("click");
+   });
+var qshare = setShareInfo({
+         title:          '微信跳一跳自动刷分',
+         summary:        '微信跳一跳自动刷分',
+         pic:            '',
+         url:            'https://i3esn0w.github.io',
+         WXconfig:       {
+             swapTitleInWX: true,
+             appId: '',
+             timestamp: '',
+             nonceStr: '',
+             signature: ''
+         }
+});    
+    
+$().click(function () {
+    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+    qshare();
+});    
+    
+    
+var mshare = new mShare({
+    title: '微信跳一跳自动刷分',
+    url: 'https://i3esn0w.github.io',
+    desc: '微信跳一跳自动刷分',
+    img: ''
+    
+});
+$().click(function () {
+    // 1 ==> 朋友圈  2 ==> 朋友  0 ==> 直接弹出原生
+    mshare.init(1);
+});
+
 </script>
